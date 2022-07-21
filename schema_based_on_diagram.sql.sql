@@ -5,20 +5,22 @@ CREATE TABLE patients (
 );
 
 CREATE TABLE history_treatment_id (
-  medical_history_id INT PRIMARY KEY,
-  treatment_id INT PRIMARY KEY
+  medical_history_fk INT PRIMARY KEY,
+  treatment_fk INT PRIMARY KEY
 );
 
 CREATE TABLE medical_histories (
     id INT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES history_treatment_id(medical_history_id),
+    FOREIGN KEY (id) REFERENCES history_treatment_id(medical_history_fk),
     admitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     patient_id INT,
     FOREIGN KEY (patient_id) REFERENCES patients(id)
+    status VARCHAR(250)
 );
 
 CREATE TABLE invoices (
     id INT PRIMARY KEY,
+    total_amount DECIMAL(6,2),
     generated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     payed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     medical_history_id INT,
@@ -27,7 +29,7 @@ CREATE TABLE invoices (
 
 CREATE TABLE treatment (
     id INT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES history_treatment_id(treatment_id),
+    FOREIGN KEY (id) REFERENCES history_treatment_id(treatment_fk),
     type VARCHAR(250),
     name VARCHAR(250)
 );
