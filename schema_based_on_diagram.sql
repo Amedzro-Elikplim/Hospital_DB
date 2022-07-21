@@ -5,10 +5,10 @@ CREATE TABLE patients (
 );
 
 CREATE TABLE history_treatment_id (
-  medical_history_fk INT ,
-  FOREIGN KEY (medical_history_fk) REFERENCES medical_histories(id),
-  treatment_fk INT 
-  FOREIGN KEY (treatment_fk) REFERENCES treatment_id(id),
+  medical_history_id INT ,
+  FOREIGN KEY (medical_history_id) REFERENCES medical_histories(id),
+  treatment_id INT 
+  FOREIGN KEY (treatment_id) REFERENCES treatment(id),
 );
 
 CREATE TABLE medical_histories (
