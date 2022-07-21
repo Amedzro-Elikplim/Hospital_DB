@@ -5,13 +5,14 @@ CREATE TABLE patients (
 );
 
 CREATE TABLE history_treatment_id (
-  medical_history_fk INT PRIMARY KEY,
-  treatment_fk INT PRIMARY KEY
+  medical_history_fk INT ,
+  FOREIGN KEY (medical_history_fk) REFERENCES medical_histories(id),
+  treatment_fk INT 
+  FOREIGN KEY (treatment_fk) REFERENCES treatment_id(id),
 );
 
 CREATE TABLE medical_histories (
     id INT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES history_treatment_id(medical_history_fk),
     admitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     patient_id INT,
     FOREIGN KEY (patient_id) REFERENCES patients(id)
@@ -29,7 +30,6 @@ CREATE TABLE invoices (
 
 CREATE TABLE treatment (
     id INT PRIMARY KEY,
-    FOREIGN KEY (id) REFERENCES history_treatment_id(treatment_fk),
     type VARCHAR(250),
     name VARCHAR(250)
 );
