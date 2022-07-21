@@ -1,3 +1,6 @@
+--Index patient id
+CREATE INDEX patient_id_asc ON medical_histories (patient_id);
+
 --Index medical history foreign key
 CREATE INDEX medical_history_asc ON invoices(medical_history_id ASC);
 
