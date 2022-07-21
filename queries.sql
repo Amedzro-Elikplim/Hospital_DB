@@ -11,8 +11,8 @@ CREATE INDEX invoice_id_asc ON invoice_items(invoice_id ASC);
 CREATE INDEX treatment_id_asc ON invoice_items(treatment_id ASC);
 
 --Index treatment_fk 
-CREATE INDEX treatment_fk_asc ON history_treatment_id(treatment_fk ASC);
+CREATE INDEX treatment_fk_asc ON history_treatment_id(treatment_id ASC);
 
 --Index medical_history_fk
-CREATE INDEX medical_history_fk_asc ON history_treatment_id(medical_history_fk ASC);
+CREATE INDEX medical_history_fk_asc ON history_treatment_id(medical_history_id ASC);
 
